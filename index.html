@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Maafin Aku, Almi 😞🙏</title>
+    <style>
+      #background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(60%);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body class="flex justify-center items-center min-h-screen text-center">
+    <video autoplay muted loop id="background-video">
+      <source src="almi.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <main class="bg-white bg-opacity-90 rounded-2xl p-8 shadow-lg shadow-red-400 animate__animated animate__fadeInDown">
+      <img
+        class="cat-img mx-auto mb-4 w-40 rounded-full shadow-md border-4 border-red-300"
+        src="https://media.tenor.com/cofRHcGGOfoAAAAi/shy-cute.gif"
+        alt="Shy Cat"
+      />
+      <h2 class="text-red-500 text-2xl font-semibold">Almi 😞🙏</h2>
+      <p class="text-gray-700 text-xl font-bold">Aku minta maaf...</p>
+      <div class="mt-5 flex justify-center space-x-4">
+        <button id="yesButton" class="bg-green-500 hover:bg-green-600 text-white rounded-lg text-xl px-4 py-2 shadow-lg transition-transform transform hover:scale-105 animate__pulse animate__animated animate__infinite">
+          Dimaafin
+        </button>
+        <button id="noButton" class="bg-red-500 hover:bg-red-600 text-white rounded-lg text-xl px-4 py-2 shadow-lg transition-transform transform hover:scale-105">
+          Tidak
+        </button>
+      </div>
+      <div class="numbers hidden mt-5 flex justify-center">
+        <!-- ganti link -->
+        <a
+          href="https://wa.me/6287784008386"
+          type="button"
+          class="bg-green-500 text-white py-1 px-2 rounded btn-yes w-100 text-xl font-bold"
+        >
+          <!-- ganti tulisan tombol link -->
+          Chat disini</a
+        >
+      </div>
+    </main>
+    <script>
+      const yesButton = document.getElementById("yesButton");
+      const noButton = document.getElementById("noButton");
+      const numbers = document.getElementById("numbers");
+      const catImg = document.querySelector(".cat-img");
+      let count = 0;
+      const MAX_COUNT = 5;
+      const sadImages = [
+        "https://media1.tenor.com/m/BbSkyx3DaEgAAAAd/goma-sad.gif",
+        "https://media.tenor.com/M9WbqMQ2ISwAAAAi/annoyed.gif",
+        "https://i.pinimg.com/originals/96/43/2e/96432e7570c1d014a84085379ba369d7.gif",
+        "https://i.pinimg.com/originals/e1/64/7b/e1647b7fd330918520b12076a8a2dfcd.gif",
+        "https://media1.tenor.com/m/M_5Qg9ok3HQAAAAC/cat-pout.gif"
+      ];
+      const finalImage = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW9temgzcjlieHJtOXM2YXhoeW94N2k2c3ljcmtpYTZ4NnBicm0ybyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f9EmXxglhdhAj1bo28/giphy.webp";
+      const noMessages = ["Tidak", "Hmmm?", "Yakin?", "Klik Dimaafin", "Huft..", "🥺🙏"]; 
+      
+      yesButton.addEventListener("click", () => {
+        document.querySelector("main").classList.add("animate__bounceOut");
+        setTimeout(() => {
+          document.querySelector("main").innerHTML = `
+            <h2 class='text-green-500 text-3xl font-bold'>Terima kasih! 🥰</h2>
+            <img class='mx-auto w-40 rounded-full mt-4' src='${finalImage}' alt='Happy Cat' />
+          `;
+        }, 1000);
+      });
+
+      noButton.addEventListener("click", () => {
+        if (count < MAX_COUNT) {
+          catImg.src = sadImages[count];
+          noButton.innerHTML = noMessages[count];
+          count++;
+        } else {
+          noButton.innerHTML = "😢💔";
+        }
+      });
+    </script>
+  </body>
+</html>
